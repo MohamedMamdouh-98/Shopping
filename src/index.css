@@ -1,0 +1,30 @@
+.nav__link{
+    text-decoration: none;
+    color: #000;
+    position: relative;
+    transition: all .3s ease-in-out;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.nav__link::after{
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 4px;
+    background: #000;
+    border-radius: 20px;
+    left: -100%;
+    bottom: 0;
+    transition: all .3s ease-in-out;
+}
+.nav__link:hover::after{
+    left: 0;
+}
+.nav__link:hover{
+    color: #000;
+}
+.btn-delete-all{
+    width: 150px
+}

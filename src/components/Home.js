@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../redux/slices/productsSlice";
 import { addToCart } from "../redux/slices/cartSlice";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Home = () => {
-
+  const notify = () => toast.success("The product has been added to the cart");
+  /////////////////////////////////
   const products = useSelector((state) => state.products);
   const cart = useSelector((state) => state.cart);
   console.log(cart.length)
@@ -14,6 +16,7 @@ const Home = () => {
 
   const AddToCart = (product)=>{
     dispatch(addToCart(product))
+    notify()
   }
   useEffect(() => {
     dispatch(fetchProducts());
@@ -53,6 +56,18 @@ const Home = () => {
           </Col>
         ))}
       </Row>
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };
