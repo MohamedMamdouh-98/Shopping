@@ -35,7 +35,7 @@ const Home = () => {
   return (
     <>
       <div className="py-5 mt-5">
-        <div className="d-flex gap-2 justify-content-center my-4 filter">
+        <div className="d-flex gap-2 justify-content-center flex-wrap my-4 filter">
           <Button onClick={() => setData(newData)}>All</Button>
           <Button onClick={() => filtration("men's clothing")}>
             men's 
