@@ -2,6 +2,7 @@ import React from "react";
 import AppNavbar from "./components/AppNavbar";
 import { Route, Routes } from "react-router-dom";
 import Product from "./components/Home";
+import Checkout from './components/Checkout'
 import Cart from "./components/Cart";
 import { Container } from "react-bootstrap";
 import './index.css'
@@ -15,6 +16,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Product />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout/>} />
         </Routes>
       </Container>
       <Footer/>

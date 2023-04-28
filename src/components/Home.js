@@ -11,21 +11,12 @@ const Home = () => {
   /////////////////////////////////
 
 
-
   const products = useSelector((state) => state.products);
   ///////////////////////////////filter///////////////
 
 
-// const filtration = (cat)=> {
-//    data.filter((x)=> x.category == cat)
-// }
+
   ///////////////////////////////////////////////////
-
-
-
-
-
-
 
   const cart = useSelector((state) => state.cart);
   console.log(cart.length);
@@ -43,13 +34,13 @@ const Home = () => {
     <>
     
     <div className="py-5 mt-5">
-    <div className="d-flex gap-2">
-      {/* <Button>All</Button>
+    {/* <div className="d-flex gap-2">
+      <Button>All</Button>
       <Button onClick={()=> filtration("men's clothing")}>men's clothing</Button>
       <Button onClick={()=> filtration("jewelery")}>jewelery</Button>
       <Button onClick={()=> filtration("electronics")}>electronics</Button>
-      <Button onClick={()=> filtration("women's clothing")}>women's clothing</Button> */}
-    </div>
+      <Button onClick={()=> filtration("women's clothing")}>women's clothing</Button>
+    </div> */}
       <Row>
         {products.map((product) => (
           <Col md={3} xs={12} key={product.id} className="mt-3">
