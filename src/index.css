@@ -158,12 +158,11 @@ a{
 
 
 .box{
-    transition: transform .2s ease-in-out ;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2)
 }
-.box:hover{
-    transform: scale(1.2);
-    z-index: 1;
-    cursor: pointer;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.473)
+
+.filter button{
+    width: fit-content;
+    background: #000!important;
+    border: none!important
 }

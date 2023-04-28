@@ -10,12 +10,13 @@ const Home = () => {
   const notify = () => toast.success("The product has been added to the cart");
   /////////////////////////////////
 
-
   const products = useSelector((state) => state.products);
   ///////////////////////////////filter///////////////
-
-
-
+  const newData = products;
+  const [data, setData] = useState(newData);
+  const filtration = (cat) => {
+    setData(newData.filter((x) => x.category == cat));
+  };
   ///////////////////////////////////////////////////
 
   const cart = useSelector((state) => state.cart);
@@ -32,73 +33,76 @@ const Home = () => {
   }, []);
   return (
     <>
-    
-    <div className="py-5 mt-5">
-    {/* <div className="d-flex gap-2">
-      <Button>All</Button>
-      <Button onClick={()=> filtration("men's clothing")}>men's clothing</Button>
-      <Button onClick={()=> filtration("jewelery")}>jewelery</Button>
-      <Button onClick={()=> filtration("electronics")}>electronics</Button>
-      <Button onClick={()=> filtration("women's clothing")}>women's clothing</Button>
-    </div> */}
-      <Row>
-        {products.map((product) => (
-          <Col md={3} xs={12} key={product.id} className="mt-3">
-            <Card
-              className="text-center py-3 mx-auto box"
-              style={{
-                height: "350px",
-                border: "none",
-              }}
-            >
-              <Card.Img
-                variant="top"
-                src={product.image}
+      <div className="py-5 mt-5">
+        <div className="d-flex gap-2 justify-content-center my-4 filter">
+          <Button onClick={() => setData(newData)}>All</Button>
+          <Button onClick={() => filtration("men's clothing")}>
+            men's 
+          </Button>
+          <Button onClick={() => filtration("jewelery")}>jewelery</Button>
+          <Button onClick={() => filtration("electronics")}>electronics</Button>
+          <Button onClick={() => filtration("women's clothing")}>
+            women's 
+          </Button>
+        </div>
+        <Row>
+          {data.map((product) => (
+            <Col md={3} xs={12} key={product.id} className="mt-3">
+              <Card
+                className="text-center py-3 mx-auto box"
                 style={{
-                  height: "100px",
-                  width: "100px",
-                  margin: "auto",
+                  height: "350px",
+                  border: "none",
                 }}
-              />
-              <Card.Body>
-                <Card.Title
-                  className="fs-6 d-flex align-items-center"
-                  style={{ height: "100px" }}
-                >
-                  {product.title}
-                </Card.Title>
-                <Card.Text className="text-start fw-bold">
-                  <div className='d-flex align-items-center gap-4'>
-                    <span>{product.price} $</span>
-                    <div>
-                    <Rate defaultValue={product.rating.rate} allowHalf/>
+              >
+                <Card.Img
+                  variant="top"
+                  src={product.image}
+                  style={{
+                    height: "100px",
+                    width: "100px",
+                    margin: "auto",
+                  }}
+                />
+                <Card.Body>
+                  <Card.Title
+                    className="fs-6 d-flex align-items-center"
+                    style={{ height: "100px" }}
+                  >
+                    {product.title}
+                  </Card.Title>
+                  <Card.Text className="text-start fw-bold">
+                    <div className="d-flex align-items-center gap-4">
+                      <span>{product.price} $</span>
+                      <div>
+                        <Rate defaultValue={product.rating.rate} allowHalf />
+                      </div>
                     </div>
-                  </div>
-                </Card.Text>
-                <Button
-                  variant="primary"
-                  onClick={() => AddToCart({ ...product, quantity: 1 })}
-                >
-                  Add To Cart
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-      <ToastContainer
-        position="bottom-left"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-    </div>
+                  </Card.Text>
+                  <Button
+                    variant="primary"
+                    onClick={() => AddToCart({ ...product, quantity: 1 })}
+                  >
+                    Add To Cart
+                  </Button>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+        <ToastContainer
+          position="bottom-left"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+      </div>
     </>
   );
 };
