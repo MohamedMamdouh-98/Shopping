@@ -6,6 +6,7 @@ import Cart from "./components/Cart";
 import { Container } from "react-bootstrap";
 import './index.css'
 import Footer from "./components/Footer";
+import ScrollToTop from "react-scroll-to-top";
 const App = () => {
   return (
     <>
@@ -17,6 +18,10 @@ const App = () => {
         </Routes>
       </Container>
       <Footer/>
+      <ScrollToTop
+      smooth
+      top='500'
+      />
     </>
   );
 };
