@@ -30,6 +30,7 @@ const Home = () => {
   };
   useEffect(() => {
     dispatch(fetchProducts());
+    setData(newData)
   }, []);
   return (
     <>
