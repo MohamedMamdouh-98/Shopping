@@ -7,36 +7,48 @@ import { ToastContainer, toast } from "react-toastify";
 import { Rate } from "antd";
 import "react-toastify/dist/ReactToastify.css";
 const Home = () => {
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
   const notify = () => toast.success("The product has been added to the cart");
   /////////////////////////////////
-
+  
   const products = useSelector((state) => state.products);
+  const [data, setData] = useState([]);
+
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+  
+  useEffect(() => {
+    setData(products);
+  }, [products])
+
+  
   ///////////////////////////////filter///////////////
-  const newData = products;
-  const [data, setData] = useState(newData);
   const filtration = (cat) => {
+    const newData = products;
     setData(newData.filter((x) => x.category == cat));
   };
+
+
+
   ///////////////////////////////////////////////////
 
-  const cart = useSelector((state) => state.cart);
-  console.log(cart.length);
-  const dispatch = useDispatch();
+
   // add to cart
 
   const AddToCart = (product) => {
     dispatch(addToCart(product));
     notify();
   };
-  useEffect(() => {
-    dispatch(fetchProducts());
-    setData(newData)
-  }, []);
+
   return (
     <>
       <div className="py-5 mt-5">
         <div className="d-flex gap-2 justify-content-center flex-wrap my-4 filter">
-          <Button onClick={() => setData(newData)}>All</Button>
+          <Button onClick={() => setData(products)}>All</Button>
           <Button onClick={() => filtration("men's clothing")}>
             men's 
           </Button>
