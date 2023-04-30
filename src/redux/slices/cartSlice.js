@@ -3,10 +3,6 @@ export const cartSlice = createSlice({
   initialState: [],
   name: "catSlice",
   reducers: {
-    // addToCart: (state, action) => {
-    //   state.push(action.payload);
-    //   console.log(state, "state");
-    // },
     addToCart: (state, action) => {
       const newItemId = action.payload.id;
       const existingItem = state.find((item) => item.id === newItemId);

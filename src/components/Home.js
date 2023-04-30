@@ -11,34 +11,25 @@ const Home = () => {
   const dispatch = useDispatch();
   const notify = () => toast.success("The product has been added to the cart");
   /////////////////////////////////
-  
   const products = useSelector((state) => state.products);
   const [data, setData] = useState([]);
-
 
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  
   useEffect(() => {
-    setData(products);
-  }, [products])
+      setData(products);
 
+  }, [products])
   
-  ///////////////////////////////filter///////////////
+  ////filter///////////////
   const filtration = (cat) => {
     const newData = products;
     setData(newData.filter((x) => x.category == cat));
   };
 
-
-
-  ///////////////////////////////////////////////////
-
-
-  // add to cart
-
+  ////add to cart///////////
   const AddToCart = (product) => {
     dispatch(addToCart(product));
     notify();
